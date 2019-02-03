@@ -15,6 +15,8 @@
 		D5CDEB582206B318008A14DF /* RxReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB572206B318008A14DF /* RxReaderTests.swift */; };
 		D5CDEB632206B318008A14DF /* RxReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB622206B318008A14DF /* RxReaderUITests.swift */; };
 		D5CDEB742206B572008A14DF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB712206B572008A14DF /* MainViewController.swift */; };
+		D5CDEB802206CACE008A14DF /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB7E2206CACE008A14DF /* EntryTableViewCell.swift */; };
+		D5CDEB812206CACE008A14DF /* EntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5CDEB7F2206CACE008A14DF /* EntryTableViewCell.xib */; };
 		E823DD0A8DCE396E6909A9E6 /* Pods_RxReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B8ACFFC39ED6D4DA0DB34D /* Pods_RxReaderTests.framework */; };
 		F895260D3A202C8CEBF3A3BA /* Pods_RxReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6361CA400A6DE30E3B62BB /* Pods_RxReaderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		D5CDEB622206B318008A14DF /* RxReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxReaderUITests.swift; sourceTree = "<group>"; };
 		D5CDEB642206B318008A14DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5CDEB712206B572008A14DF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D5CDEB7E2206CACE008A14DF /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		D5CDEB7F2206CACE008A14DF /* EntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryTableViewCell.xib; sourceTree = "<group>"; };
 		DC571A13F350CEB176389704 /* Pods-RxReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReaderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReaderUITests/Pods-RxReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FFC9051B9AAD56360AFEB0C3 /* Pods-RxReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReader/Pods-RxReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +189,8 @@
 		D5CDEB732206B572008A14DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D5CDEB7E2206CACE008A14DF /* EntryTableViewCell.swift */,
+				D5CDEB7F2206CACE008A14DF /* EntryTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CDEB812206CACE008A14DF /* EntryTableViewCell.xib in Resources */,
 				D5CDEB4D2206B318008A14DF /* LaunchScreen.storyboard in Resources */,
 				D5CDEB4A2206B318008A14DF /* Assets.xcassets in Resources */,
 				D5CDEB482206B315008A14DF /* Main.storyboard in Resources */,
@@ -423,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CDEB802206CACE008A14DF /* EntryTableViewCell.swift in Sources */,
 				D5CDEB742206B572008A14DF /* MainViewController.swift in Sources */,
 				D5CDEB432206B315008A14DF /* AppDelegate.swift in Sources */,
 			);
