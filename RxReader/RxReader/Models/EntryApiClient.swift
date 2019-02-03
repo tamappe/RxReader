@@ -12,7 +12,6 @@ class EntryApiClient: NSObject {
     func request(completion: @escaping ([Entry]?, Error?) -> Void) {
         guard let url = URL(string: "https://summary-app-api.herokuapp.com/") else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            // ここのエラーはクライアントサイドのエラー(ホストに接続できないなど)
             if let error = error {
                 print("クライアントエラー: \(error.localizedDescription) \n")
                 completion(nil, error)
@@ -26,7 +25,7 @@ class EntryApiClient: NSObject {
                 print(data)
                 let decoder: JSONDecoder = JSONDecoder()
                 do {
-                    let json: ResponseData = try decoder.decode(ResponseData.self, from: data)
+                    let json = try decoder.decode(ResponseData.self, from: data)
                     print(json)
                     completion(json.data, nil)
                 } catch {
@@ -34,7 +33,6 @@ class EntryApiClient: NSObject {
                     completion(nil, error)
                 }
             } else {
-                // レスポンスのステータスコードが200でない場合などはサーバサイドエラー
                 print("サーバエラー ステータスコード: \(response.statusCode)\n")
                 completion(nil, error)
             }
