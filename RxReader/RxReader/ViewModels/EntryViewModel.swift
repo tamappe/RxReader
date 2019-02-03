@@ -7,30 +7,17 @@
 //
 
 import UIKit
-import RxDataSources
 import RxSwift
 
-struct SectionOfEntry {
-    var items: [Item]
-}
-
-extension SectionOfEntry: SectionModelType {
-    typealias Item = Entry
+final class EntryViewModel {
     
-    init(original: SectionOfEntry, items: [SectionOfEntry.Item]) {
-        self = original
-        self.items = items
-    }
-}
-
-class EntryViewModel {
+    let entries = PublishSubject<[Entry]>()
     
-    let items = PublishSubject<[SectionOfEntry]>()
-    
-    func updateItem() {
-        var sections: [SectionOfEntry] = []
-        sections.append(SectionOfEntry(items: [SectionOfEntry.Item(name: "Nozaki"),
-                                               SectionOfEntry.Item(name: "Sakura")]))
-        items.onNext(sections)
+    func updateEntry() {
+        var sections: [Entry] = []
+        sections.append(Entry.init(name: "test2"))
+        sections.append(Entry.init(name: "test3"))
+        sections.append(Entry.init(name: "test4"))
+        entries.onNext(sections)
     }
 }

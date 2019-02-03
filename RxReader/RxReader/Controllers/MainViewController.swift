@@ -34,13 +34,13 @@ extension MainViewController {
     private func setupViewModel() {
         viewModel = EntryViewModel()
         
-        viewModel.items
+        viewModel.entries
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { indexPath, person, cell in
                 if let cellToUse = cell as? EntryTableViewCell {
-                    cellToUse.textLabel?.text = person.items[indexPath].name
-                    print(person.items[indexPath].name)
+                    cellToUse.textLabel?.text = person.name
+                    print(person.name)
                 }
             }.disposed(by:disposeBag)
-        viewModel.updateItem()
+        viewModel.updateEntry()
     }
 }
