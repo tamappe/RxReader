@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var viewModel: EntryViewModel!
+    private var viewModel = EntryViewModel()
     
     let disposeBag = DisposeBag()
 
@@ -22,29 +22,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupViewController()
         setupTableViewOptions()
-        setupViewModel()
-    }
-}
-
-extension MainViewController {
-    private func setupViewController() {
-        self.title = "トップ画面"
-    }
-    
-    private func setupTableViewOptions() {
-        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
-        self.tableView.estimatedRowHeight = 100
-        self.tableView.rowHeight = UITableView.automaticDimension
-    }
-    
-    private func setupViewModel() {
-        viewModel = EntryViewModel()
         
         viewModel.entries
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { _, entry, cell in
-                if let cellToUse = cell as? EntryTableViewCell {
-                    cellToUse.configureCell(entry: entry)
+                if let cell = cell as? EntryTableViewCell {
+                    cell.configureCell(entry: entry)
                 }
             }.disposed(by:disposeBag)
         viewModel.updateEntry()
@@ -58,5 +40,18 @@ extension MainViewController {
                 detailPageVC.urlString = cell?.urlString
                 self?.navigationController?.pushViewController(detailPageVC, animated: true)
             }).disposed(by: disposeBag)
+    }
+}
+
+extension MainViewController {
+    private func setupViewController() {
+        self.title = "トップ画面"
+    }
+    
+    private func setupTableViewOptions() {
+        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
 }
