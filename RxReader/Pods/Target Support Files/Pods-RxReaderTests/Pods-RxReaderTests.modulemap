@@ -1,0 +1,6 @@
+framework module Pods_RxReaderTests {
+  umbrella header "Pods-RxReaderTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
