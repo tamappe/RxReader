@@ -8,6 +8,18 @@
 
 import Foundation
 
-struct Entry {
-    let name: String
+struct ResponseData: Codable {
+    let data: [Entry]
+}
+
+struct Entry: Codable {
+    let title: String
+    let blogTitle: String
+    let link: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case blogTitle = "blog_title"
+        case link
+    }
 }

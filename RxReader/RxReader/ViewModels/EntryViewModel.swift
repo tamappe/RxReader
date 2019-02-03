@@ -15,9 +15,9 @@ final class EntryViewModel {
     
     func updateEntry() {
         var sections: [Entry] = []
-        sections.append(Entry.init(name: "test2"))
-        sections.append(Entry.init(name: "test3"))
-        sections.append(Entry.init(name: "test4"))
+//        sections.append(Entry.init(name: "test2"))
+//        sections.append(Entry.init(name: "test3"))
+//        sections.append(Entry.init(name: "test4"))
         entries.onNext(sections)
     }
 }

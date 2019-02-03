@@ -17,13 +17,18 @@ class MainViewController: UIViewController {
     private var viewModel: EntryViewModel!
     
     let disposeBag = DisposeBag()
+    
+    let apiClient = EntryApiClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
-        setupViewModel()
+//        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
+//        setupViewModel()
+        apiClient.request { (entries, error) in
+            
+        }
     }
 }
 
@@ -37,8 +42,8 @@ extension MainViewController {
         viewModel.entries
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { indexPath, person, cell in
                 if let cellToUse = cell as? EntryTableViewCell {
-                    cellToUse.textLabel?.text = person.name
-                    print(person.name)
+//                    cellToUse.textLabel?.text = person.name
+//                    print(person.name)
                 }
             }.disposed(by:disposeBag)
         viewModel.updateEntry()
