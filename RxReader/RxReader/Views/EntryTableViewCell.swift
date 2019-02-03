@@ -9,6 +9,9 @@
 import UIKit
 
 class EntryTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak private var blogTitleLabel: UILabel!
+    @IBOutlet weak private var publishedLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +22,11 @@ class EntryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(entry: Entry) {
+        blogTitleLabel.text = entry.title
+        publishedLabel.text = entry.published
     }
     
 }

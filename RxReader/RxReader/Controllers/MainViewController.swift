@@ -17,18 +17,11 @@ class MainViewController: UIViewController {
     private var viewModel: EntryViewModel!
     
     let disposeBag = DisposeBag()
-    
-    let apiClient = EntryApiClient()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
-//        setupViewModel()
-        apiClient.request { (entries, error) in
-            
-        }
+        setupTableViewOptions()
+        setupViewModel()
     }
 }
 
@@ -36,14 +29,21 @@ extension MainViewController {
     private func setupViewController() {
 //        self.title = "タイトル"
     }
+    
+    private func setupTableViewOptions() {
+        let nib = UINib(nibName: "EntryTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "EntryTableViewCell")
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableView.automaticDimension
+    }
+    
     private func setupViewModel() {
         viewModel = EntryViewModel()
         
         viewModel.entries
-            .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { indexPath, person, cell in
+            .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { _, entry, cell in
                 if let cellToUse = cell as? EntryTableViewCell {
-//                    cellToUse.textLabel?.text = person.name
-//                    print(person.name)
+                    cellToUse.configureCell(entry: entry)
                 }
             }.disposed(by:disposeBag)
         viewModel.updateEntry()

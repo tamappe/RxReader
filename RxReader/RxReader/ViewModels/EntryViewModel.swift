@@ -12,12 +12,12 @@ import RxSwift
 final class EntryViewModel {
     
     let entries = PublishSubject<[Entry]>()
+
+    let apiClient = EntryApiClient()
     
     func updateEntry() {
-        var sections: [Entry] = []
-//        sections.append(Entry.init(name: "test2"))
-//        sections.append(Entry.init(name: "test3"))
-//        sections.append(Entry.init(name: "test4"))
-        entries.onNext(sections)
+        apiClient.request { (entrys, error) in
+            self.entries.onNext(entrys ?? [])
+        }
     }
 }

@@ -10,16 +10,19 @@ import Foundation
 
 struct ResponseData: Codable {
     let data: [Entry]
+    enum CodingKeys: String, CodingKey {
+        case data = "result_data"
+    }
 }
 
 struct Entry: Codable {
     let title: String
-    let blogTitle: String
-    let link: String
+    let published: String
+    let linkUrl: String
     
     enum CodingKeys: String, CodingKey {
         case title
-        case blogTitle = "blog_title"
-        case link
+        case published
+        case linkUrl = "link_url"
     }
 }

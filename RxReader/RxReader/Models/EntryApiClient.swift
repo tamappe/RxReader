@@ -10,7 +10,7 @@ import UIKit
 
 class EntryApiClient: NSObject {
     func request(completion: @escaping ([Entry]?, Error?) -> Void) {
-        guard let url = URL(string: "https://summary-app-api.herokuapp.com/") else { return }
+        guard let url = URL(string: "https://summary-api.herokuapp.com/") else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("クライアントエラー: \(error.localizedDescription) \n")
