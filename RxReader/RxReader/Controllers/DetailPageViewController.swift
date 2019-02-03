@@ -26,9 +26,10 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
         requestPage()
     }
     
-    func requestPage() {
-        let myURL = URL(string: "https://www.apple.com")
-        let myRequest = URLRequest(url: myURL!)
+    private func requestPage() {
+        guard let urlString = urlString,
+            let myURL = URL(string: urlString) else { return }
+        let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
     }
     /*

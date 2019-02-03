@@ -48,15 +48,15 @@ extension MainViewController {
                 }
             }.disposed(by:disposeBag)
         viewModel.updateEntry()
-    }
-}
-
-extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "DetailPage", bundle: nil)
-        guard let detailPageVC = storyboard.instantiateInitialViewController() as? DetailPageViewController
-            else { return }
-        detailPageVC.urlString = ""
-        navigationController?.pushViewController(detailPageVC, animated: true)
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                let cell = self?.tableView.cellForRow(at: indexPath) as? EntryTableViewCell
+                let storyboard = UIStoryboard(name: "DetailPage", bundle: nil)
+                guard let detailPageVC = storyboard.instantiateInitialViewController() as? DetailPageViewController
+                    else { return }
+                detailPageVC.urlString = cell?.urlString
+                self?.navigationController?.pushViewController(detailPageVC, animated: true)
+            }).disposed(by: disposeBag)
     }
 }

@@ -12,6 +12,7 @@ class EntryTableViewCell: UITableViewCell {
     
     @IBOutlet weak private var blogTitleLabel: UILabel!
     @IBOutlet weak private var publishedLabel: UILabel!
+    var urlString: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +28,7 @@ class EntryTableViewCell: UITableViewCell {
     func configureCell(entry: Entry) {
         blogTitleLabel.text = entry.title
         publishedLabel.text = entry.published
+        urlString = entry.linkUrl
     }
     
 }
