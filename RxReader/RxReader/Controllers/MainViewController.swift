@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewController()
         setupTableViewOptions()
         setupViewModel()
     }
@@ -27,7 +28,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     private func setupViewController() {
-//        self.title = "タイトル"
+        self.title = "トップ画面"
     }
     
     private func setupTableViewOptions() {
@@ -47,5 +48,15 @@ extension MainViewController {
                 }
             }.disposed(by:disposeBag)
         viewModel.updateEntry()
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailPage", bundle: nil)
+        guard let detailPageVC = storyboard.instantiateInitialViewController() as? DetailPageViewController
+            else { return }
+        detailPageVC.urlString = ""
+        navigationController?.pushViewController(detailPageVC, animated: true)
     }
 }

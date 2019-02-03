@@ -20,6 +20,8 @@
 		D5CDEB832206D704008A14DF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB822206D704008A14DF /* Entry.swift */; };
 		D5CDEB892206D77C008A14DF /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB882206D77C008A14DF /* EntryViewModel.swift */; };
 		D5CDEB8D2206DF60008A14DF /* EntryApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB8C2206DF60008A14DF /* EntryApiClient.swift */; };
+		D5CDEB8F2206EC11008A14DF /* DetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CDEB8E2206EC11008A14DF /* DetailPage.storyboard */; };
+		D5CDEB912206ECA4008A14DF /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB902206ECA4008A14DF /* DetailPageViewController.swift */; };
 		E823DD0A8DCE396E6909A9E6 /* Pods_RxReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B8ACFFC39ED6D4DA0DB34D /* Pods_RxReaderTests.framework */; };
 		F895260D3A202C8CEBF3A3BA /* Pods_RxReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6361CA400A6DE30E3B62BB /* Pods_RxReaderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +69,8 @@
 		D5CDEB822206D704008A14DF /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D5CDEB882206D77C008A14DF /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		D5CDEB8C2206DF60008A14DF /* EntryApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryApiClient.swift; sourceTree = "<group>"; };
+		D5CDEB8E2206EC11008A14DF /* DetailPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailPage.storyboard; sourceTree = "<group>"; };
+		D5CDEB902206ECA4008A14DF /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
 		DC571A13F350CEB176389704 /* Pods-RxReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReaderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReaderUITests/Pods-RxReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FFC9051B9AAD56360AFEB0C3 /* Pods-RxReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReader/Pods-RxReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +157,7 @@
 				D5CDEB732206B572008A14DF /* Views */,
 				D5CDEB422206B315008A14DF /* AppDelegate.swift */,
 				D5CDEB462206B315008A14DF /* Main.storyboard */,
+				D5CDEB8E2206EC11008A14DF /* DetailPage.storyboard */,
 				D5CDEB492206B318008A14DF /* Assets.xcassets */,
 				D5CDEB4B2206B318008A14DF /* LaunchScreen.storyboard */,
 				D5CDEB4E2206B318008A14DF /* Info.plist */,
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				D5CDEB712206B572008A14DF /* MainViewController.swift */,
+				D5CDEB902206ECA4008A14DF /* DetailPageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5CDEB812206CACE008A14DF /* EntryTableViewCell.xib in Resources */,
+				D5CDEB8F2206EC11008A14DF /* DetailPage.storyboard in Resources */,
 				D5CDEB4D2206B318008A14DF /* LaunchScreen.storyboard in Resources */,
 				D5CDEB4A2206B318008A14DF /* Assets.xcassets in Resources */,
 				D5CDEB482206B315008A14DF /* Main.storyboard in Resources */,
@@ -447,6 +454,7 @@
 				D5CDEB892206D77C008A14DF /* EntryViewModel.swift in Sources */,
 				D5CDEB8D2206DF60008A14DF /* EntryApiClient.swift in Sources */,
 				D5CDEB802206CACE008A14DF /* EntryTableViewCell.swift in Sources */,
+				D5CDEB912206ECA4008A14DF /* DetailPageViewController.swift in Sources */,
 				D5CDEB742206B572008A14DF /* MainViewController.swift in Sources */,
 				D5CDEB432206B315008A14DF /* AppDelegate.swift in Sources */,
 			);
