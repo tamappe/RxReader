@@ -8,7 +8,7 @@ target 'RxReader' do
   # Pods for RxReader
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
-
+  pod 'Nuke', '~> 7.0'
   target 'RxReaderTests' do
     inherit! :search_paths
     # Pods for testing

@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Nuke
 
 class EntryTableViewCell: UITableViewCell {
     
     @IBOutlet weak private var blogTitleLabel: UILabel!
     @IBOutlet weak private var publishedLabel: UILabel!
+    @IBOutlet weak private var thumbnailImageView: UIImageView!
+
     var urlString: String?
 
     override func awakeFromNib() {
@@ -29,6 +32,9 @@ class EntryTableViewCell: UITableViewCell {
         blogTitleLabel.text = entry.title
         publishedLabel.text = entry.published
         urlString = entry.linkUrl
+
+        guard let url = URL(string: entry.imageUrl ?? "") else { return }
+        Nuke.loadImage(with: url, into: thumbnailImageView)
     }
     
 }

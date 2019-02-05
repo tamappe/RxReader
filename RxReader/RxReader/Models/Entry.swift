@@ -19,10 +19,12 @@ struct Entry: Codable {
     let title: String
     let published: String
     let linkUrl: String
+    let imageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case title
         case published
         case linkUrl = "link_url"
+        case imageUrl = "image_url"
     }
 }

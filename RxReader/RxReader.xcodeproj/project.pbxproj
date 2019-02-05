@@ -22,6 +22,7 @@
 		D5CDEB8D2206DF60008A14DF /* EntryApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB8C2206DF60008A14DF /* EntryApiClient.swift */; };
 		D5CDEB8F2206EC11008A14DF /* DetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CDEB8E2206EC11008A14DF /* DetailPage.storyboard */; };
 		D5CDEB912206ECA4008A14DF /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB902206ECA4008A14DF /* DetailPageViewController.swift */; };
+		D5FAFEF62209CB140089DE07 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAFEF52209CB140089DE07 /* UIImageView+Extension.swift */; };
 		E823DD0A8DCE396E6909A9E6 /* Pods_RxReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B8ACFFC39ED6D4DA0DB34D /* Pods_RxReaderTests.framework */; };
 		F895260D3A202C8CEBF3A3BA /* Pods_RxReaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6361CA400A6DE30E3B62BB /* Pods_RxReaderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		D5CDEB8C2206DF60008A14DF /* EntryApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryApiClient.swift; sourceTree = "<group>"; };
 		D5CDEB8E2206EC11008A14DF /* DetailPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailPage.storyboard; sourceTree = "<group>"; };
 		D5CDEB902206ECA4008A14DF /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
+		D5FAFEF52209CB140089DE07 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		DC571A13F350CEB176389704 /* Pods-RxReaderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReaderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReaderUITests/Pods-RxReaderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FFC9051B9AAD56360AFEB0C3 /* Pods-RxReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxReader/Pods-RxReader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 		D5CDEB412206B315008A14DF /* RxReader */ = {
 			isa = PBXGroup;
 			children = (
+				D5FAFEF42209CB000089DE07 /* Utils */,
 				D5CDEB852206D749008A14DF /* ViewModels */,
 				D5CDEB702206B572008A14DF /* Controllers */,
 				D5CDEB722206B572008A14DF /* Models */,
@@ -216,6 +219,14 @@
 				D5CDEB882206D77C008A14DF /* EntryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D5FAFEF42209CB000089DE07 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D5FAFEF52209CB140089DE07 /* UIImageView+Extension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxReader/Pods-RxReader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -412,6 +424,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -452,6 +465,7 @@
 			files = (
 				D5CDEB832206D704008A14DF /* Entry.swift in Sources */,
 				D5CDEB892206D77C008A14DF /* EntryViewModel.swift in Sources */,
+				D5FAFEF62209CB140089DE07 /* UIImageView+Extension.swift in Sources */,
 				D5CDEB8D2206DF60008A14DF /* EntryApiClient.swift in Sources */,
 				D5CDEB802206CACE008A14DF /* EntryTableViewCell.swift in Sources */,
 				D5CDEB912206ECA4008A14DF /* DetailPageViewController.swift in Sources */,
