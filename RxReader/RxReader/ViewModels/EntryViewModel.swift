@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class EntryViewModel {
     
@@ -15,9 +16,25 @@ final class EntryViewModel {
 
     let apiClient = EntryApiClient()
     
+    var isLoading = false
+    
+    var dataSource: [Entry] = []
+    
     func updateEntry() {
+        isLoading = true
         apiClient.request { (entrys, error) in
-            self.entries.onNext(entrys ?? [])
+            self.isLoading = false
+            self.dataSource.append(contentsOf: entrys ?? [])
+            self.entries.onNext(self.dataSource)
+        }
+    }
+    
+    func insertEntries() {
+        isLoading = true
+        apiClient.request { (entrys, error) in
+            self.isLoading = false
+            self.dataSource.append(contentsOf: entrys ?? [])
+            self.entries.onNext(self.dataSource)
         }
     }
 }

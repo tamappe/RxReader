@@ -12,6 +12,12 @@ import RxCocoa
 
 class MainViewController: UIViewController {
     
+    static let startLoadingOffset: CGFloat = 20.0
+    
+    static func isNearTheBottomEdge(contentOffset: CGPoint, _ tableView: UITableView) -> Bool {
+        return contentOffset.y + tableView.frame.size.height + startLoadingOffset > tableView.contentSize.height
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel = EntryViewModel()
@@ -24,11 +30,13 @@ class MainViewController: UIViewController {
         setupTableViewOptions()
         
         viewModel.entries
+            .filter{ !$0.isEmpty }
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { _, entry, cell in
                 if let cell = cell as? EntryTableViewCell {
                     cell.configureCell(entry: entry)
                 }
-            }.disposed(by:disposeBag)
+            }
+            .disposed(by:disposeBag)
         viewModel.updateEntry()
         
         tableView.rx.itemSelected
@@ -40,6 +48,16 @@ class MainViewController: UIViewController {
                 detailPageVC.urlString = cell?.urlString
                 self?.navigationController?.pushViewController(detailPageVC, animated: true)
             }).disposed(by: disposeBag)
+    
+        tableView.rx.contentOffset
+            .flatMap { offset -> Observable<Void> in
+            return MainViewController.isNearTheBottomEdge(contentOffset: offset, self.tableView) ? Observable.just(()) : Observable.empty()
+            }
+            .filter{ !self.viewModel.isLoading }
+            .subscribe(onNext: {
+                // TODO: 本当はこんな処理はしないが便宜上
+                self.viewModel.insertEntries()
+            })
     }
 }
 
