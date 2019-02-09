@@ -12,13 +12,13 @@ import RxCocoa
 
 final class EntryViewModel {
     
-    let entries = PublishSubject<[Entry]>()
+    let dataSource = BehaviorRelay(value: [Entry]())
 
     let apiClient = EntryApiClient()
     
     var isLoading = false
     
-    var dataSource: [Entry] = []
+    var entries: [Entry] = []
 
     var currentPage = 0
     
@@ -29,8 +29,8 @@ final class EntryViewModel {
         let param = ["page": currentPage]
         apiClient.request(parameters: param as [String : AnyObject]) { (entrys, error) in
             self.isLoading = false
-            self.dataSource.append(contentsOf: entrys ?? [])
-            self.entries.onNext(self.dataSource)
+            self.entries.append(contentsOf: entrys ?? [])
+            self.dataSource.accept(self.entries)
         }
     }
     

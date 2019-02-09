@@ -48,14 +48,14 @@ extension MainViewController {
     }
     
     private func setupViewModel() {
-        viewModel.entries
+        viewModel.dataSource
+            .subscribeOn(MainScheduler.instance)
             .filter{ !$0.isEmpty }
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { index, entry, cell in
                 if let cell = cell as? EntryTableViewCell {
                     cell.configureCell(entry: entry, row: index)
                 }
-            }
-            .disposed(by:disposeBag)
+            }.disposed(by: self.disposeBag)
         viewModel.updateEntry()
     }
     
