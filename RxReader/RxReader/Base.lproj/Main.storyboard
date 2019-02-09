@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idZ-2l-mh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="45"/>
+            <point key="canvasLocation" x="-807" y="82"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -41,10 +41,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bXd-Cf-mmC" secondAttribute="bottom" id="PPe-sx-coD"/>
-                            <constraint firstItem="bXd-Cf-mmC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T3b-52-0X1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bXd-Cf-mmC" secondAttribute="trailing" id="V00-9k-aaX"/>
-                            <constraint firstItem="bXd-Cf-mmC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qCu-QB-81g"/>
+                            <constraint firstAttribute="bottom" secondItem="bXd-Cf-mmC" secondAttribute="bottom" id="PPe-sx-coD"/>
+                            <constraint firstItem="bXd-Cf-mmC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="T3b-52-0X1"/>
+                            <constraint firstAttribute="trailing" secondItem="bXd-Cf-mmC" secondAttribute="trailing" id="V00-9k-aaX"/>
+                            <constraint firstItem="bXd-Cf-mmC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="qCu-QB-81g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

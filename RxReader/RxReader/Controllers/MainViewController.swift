@@ -26,14 +26,16 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.blue
         setupViewController()
         setupTableViewOptions()
         
         viewModel.entries
             .filter{ !$0.isEmpty }
-            .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { _, entry, cell in
+            .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { index, entry, cell in
                 if let cell = cell as? EntryTableViewCell {
-                    cell.configureCell(entry: entry)
+                    cell.configureCell(entry: entry, row: index)
                 }
             }
             .disposed(by:disposeBag)
@@ -57,6 +59,14 @@ class MainViewController: UIViewController {
             .subscribe(onNext: {
                 // TODO: 本当はこんな処理はしないが便宜上
                 self.viewModel.insertEntries()
+            })
+        
+        tableView.rx.willDisplayCell
+            .subscribe(onNext: { cellInfo in
+                let (cell, indexPath) = cellInfo
+                if indexPath.row % 2 == 0 {
+                    cell.backgroundColor = UIColor(rgb: 0xe2e0e0)
+                }
             })
     }
 }

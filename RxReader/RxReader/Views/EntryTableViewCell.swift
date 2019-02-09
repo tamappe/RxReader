@@ -21,6 +21,11 @@ class EntryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backgroundColor = UIColor.white
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -28,7 +33,7 @@ class EntryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(entry: Entry) {
+    func configureCell(entry: Entry, row: Int) {
         blogTitleLabel.text = entry.title
         siteTitleLabel.text = entry.blogTitle
         urlString = entry.linkUrl
