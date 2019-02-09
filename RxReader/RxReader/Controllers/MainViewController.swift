@@ -34,14 +34,7 @@ class MainViewController: UIViewController {
         setupTableViewOptions()
         setupViewModel()
         setupTableViewRx()
-        
-        viewModel.isAnimating.asDriver()
-            .drive(activityIndicatorView.rx.isAnimating)
-            .disposed(by: disposeBag)
-        viewModel.isAnimating.asDriver()
-            .map { !$0 }
-            .drive(activityIndicatorView.rx.isHidden)
-            .disposed(by: disposeBag)
+        setupIndicatorLoading()
     }
 }
 
@@ -97,6 +90,16 @@ extension MainViewController {
                     cell.backgroundColor = UIColor(rgb: 0xe2e0e0)
                 }
             })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupIndicatorLoading() {
+        viewModel.isAnimating.asDriver()
+            .drive(activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        viewModel.isAnimating.asDriver()
+            .map { !$0 }
+            .drive(activityIndicatorView.rx.isHidden)
             .disposed(by: disposeBag)
     }
 }
