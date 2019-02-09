@@ -11,6 +11,7 @@ target 'RxReader' do
   pod 'Nuke', '~> 7.0'
   pod 'Alamofire', '~> 4.0'
   pod 'CocoaLumberjack/Swift'
+  pod 'RxWebKit'
   
   target 'RxReaderTests' do
     inherit! :search_paths

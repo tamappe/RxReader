@@ -8,6 +8,8 @@
 
 import UIKit
 import WebKit
+import RxWebKit
+import RxSwift
 
 class DetailPageViewController: UIViewController, WKUIDelegate {
     
@@ -24,12 +26,19 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         return progressView
     }()
+    
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.uiDelegate = self
         view = webView
         requestPage()
+        webView.rx.title
+            .subscribe(onNext: {
+                self.title = $0
+            })
+            .disposed(by: disposeBag)
         
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         self.webView.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
