@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.8.0)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Swift (3.4.2):
+    - CocoaLumberjack/Default
   - Nuke (7.5.2)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
@@ -9,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - CocoaLumberjack/Swift
   - Nuke (~> 7.0)
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
@@ -16,6 +20,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CocoaLumberjack
     - Nuke
     - RxAtomic
     - RxCocoa
@@ -23,11 +28,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: bf3f2182b2de3bc178462e4087737b76c3251fa5
+PODFILE CHECKSUM: b9fb8f07b74b62e0d5b89cbbb47c2a34b6ea748f
 
 COCOAPODS: 1.5.3
