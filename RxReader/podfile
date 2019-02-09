@@ -9,6 +9,7 @@ target 'RxReader' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'Nuke', '~> 7.0'
+  pod 'Alamofire', '~> 4.0'
   target 'RxReaderTests' do
     inherit! :search_paths
     # Pods for testing

@@ -12,7 +12,7 @@ import Nuke
 class EntryTableViewCell: UITableViewCell {
     
     @IBOutlet weak private var blogTitleLabel: UILabel!
-    @IBOutlet weak private var publishedLabel: UILabel!
+    @IBOutlet weak private var siteTitleLabel: UILabel!
     @IBOutlet weak private var thumbnailImageView: UIImageView!
 
     var urlString: String?
@@ -30,7 +30,7 @@ class EntryTableViewCell: UITableViewCell {
     
     func configureCell(entry: Entry) {
         blogTitleLabel.text = entry.title
-        publishedLabel.text = entry.published
+        siteTitleLabel.text = entry.blogTitle
         urlString = entry.linkUrl
 
         guard let url = URL(string: entry.imageUrl ?? "") else { return }

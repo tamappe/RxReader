@@ -10,21 +10,22 @@ import Foundation
 
 struct ResponseData: Codable {
     let data: [Entry]
-    enum CodingKeys: String, CodingKey {
-        case data = "result_data"
-    }
 }
 
 struct Entry: Codable {
+    let id: Int
+    let blogTitle: String
     let title: String
     let published: String
     let linkUrl: String
     let imageUrl: String?
     
     enum CodingKeys: String, CodingKey {
+        case id
+        case blogTitle = "blog_title"
         case title
         case published
-        case linkUrl = "link_url"
-        case imageUrl = "image_url"
+        case linkUrl = "link"
+        case imageUrl = "image"
     }
 }

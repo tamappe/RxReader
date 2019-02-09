@@ -19,10 +19,15 @@ final class EntryViewModel {
     var isLoading = false
     
     var dataSource: [Entry] = []
+
+    var currentPage = 0
     
     func updateEntry() {
+        guard !isLoading else { return }
         isLoading = true
-        apiClient.request { (entrys, error) in
+        currentPage += 1
+        let param = ["page": currentPage]
+        apiClient.request(parameters: param as [String : AnyObject]) { (entrys, error) in
             self.isLoading = false
             self.dataSource.append(contentsOf: entrys ?? [])
             self.entries.onNext(self.dataSource)
@@ -30,11 +35,6 @@ final class EntryViewModel {
     }
     
     func insertEntries() {
-        isLoading = true
-        apiClient.request { (entrys, error) in
-            self.isLoading = false
-            self.dataSource.append(contentsOf: entrys ?? [])
-            self.entries.onNext(self.dataSource)
-        }
+        updateEntry()
     }
 }
