@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import RxOptional
 
-class DetailPageViewController: UIViewController, WKUIDelegate {
+class DetailPageViewController: UIViewController {
     
     var urlString: String?
     
@@ -88,5 +88,15 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
     private func requestWebPage(url: URL) {
         let urlRequest = URLRequest(url: url)
         webView.load(urlRequest)
+    }
+}
+
+extension DetailPageViewController: WKUIDelegate {
+    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        return nil
     }
 }
