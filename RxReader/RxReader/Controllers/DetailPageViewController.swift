@@ -35,12 +35,20 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         webView.uiDelegate = self
         view = webView
-        setupRxModel()
-        requestPage()
+        setupRXAndRequestPage()
         setupProgressView()
     }
     
-    private func setupRxModel() {
+    private func setupProgressView() {
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.addSubview(progressView)
+        self.progressView.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 0).isActive = true
+        self.progressView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: 0).isActive = true
+        self.progressView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 0).isActive = true
+        self.progressView.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
+    }
+    
+    private func setupRXAndRequestPage() {
         let loadingObservable = webView.rx.loading
             .share()
         
@@ -65,18 +73,7 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
             .observeOn(MainScheduler.instance)
             .bind(to: progressView.rx.progress)
             .disposed(by: disposeBag)
-    }
-    
-    private func setupProgressView() {
-        guard let navigationBar = self.navigationController?.navigationBar else { return }
-        navigationBar.addSubview(progressView)
-        self.progressView.leftAnchor.constraint(equalTo: navigationBar.leftAnchor, constant: 0).isActive = true
-        self.progressView.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: 0).isActive = true
-        self.progressView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 0).isActive = true
-        self.progressView.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
-    }
-    
-    private func requestPage() {
+        
         guard let urlString = urlString, let myURL = URL(string: urlString) else { return }
         let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
