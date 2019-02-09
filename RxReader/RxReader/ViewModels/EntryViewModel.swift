@@ -21,14 +21,18 @@ final class EntryViewModel {
     var entries: [Entry] = []
 
     var currentPage = 0
+
+    final let isAnimating = Variable(false)
     
     func updateEntry() {
         guard !isLoading else { return }
         isLoading = true
+        isAnimating.value = true
         currentPage += 1
         let param = ["page": currentPage]
         apiClient.request(parameters: param as [String : AnyObject]) { (entrys, error) in
             self.isLoading = false
+            self.isAnimating.value = false
             self.entries.append(contentsOf: entrys ?? [])
             self.dataSource.accept(self.entries)
         }

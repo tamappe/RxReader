@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     
     private var viewModel = EntryViewModel()
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -32,6 +34,14 @@ class MainViewController: UIViewController {
         setupTableViewOptions()
         setupViewModel()
         setupTableViewRx()
+        
+        viewModel.isAnimating.asDriver()
+            .drive(activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        viewModel.isAnimating.asDriver()
+            .map { !$0 }
+            .drive(activityIndicatorView.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 }
 
