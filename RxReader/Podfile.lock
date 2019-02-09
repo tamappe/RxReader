@@ -7,6 +7,9 @@ PODS:
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
+  - RxOptional (3.6.2):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
   - RxWebKit (0.3.7):
@@ -18,6 +21,7 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - Nuke (~> 7.0)
   - RxCocoa (~> 4.0)
+  - RxOptional
   - RxSwift (~> 4.0)
   - RxWebKit
 
@@ -28,6 +32,7 @@ SPEC REPOS:
     - Nuke
     - RxAtomic
     - RxCocoa
+    - RxOptional
     - RxSwift
     - RxWebKit
 
@@ -37,9 +42,10 @@ SPEC CHECKSUMS:
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   RxWebKit: e39e220919e5e24546c837f5f60689036a1e5920
 
-PODFILE CHECKSUM: c1dd0319aefb397ce805acd55458412ea9429aa5
+PODFILE CHECKSUM: 5111e9328afe7f27964ca9b9c93f017ccda47a45
 
 COCOAPODS: 1.5.3

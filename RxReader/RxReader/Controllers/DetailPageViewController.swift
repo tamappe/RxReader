@@ -10,6 +10,8 @@ import UIKit
 import WebKit
 import RxWebKit
 import RxSwift
+import RxCocoa
+import RxOptional
 
 class DetailPageViewController: UIViewController, WKUIDelegate {
     
@@ -33,21 +35,36 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         webView.uiDelegate = self
         view = webView
+        setupRxModel()
         requestPage()
-        webView.rx.title
-            .subscribe(onNext: {
-                self.title = $0
-            })
-            .disposed(by: disposeBag)
-        
-        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        self.webView.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
         setupProgressView()
     }
     
-    deinit {
-        self.webView.removeObserver(self, forKeyPath: "estimatedProgress", context: nil)
-        self.webView.removeObserver(self, forKeyPath: "loading", context: nil)
+    private func setupRxModel() {
+        let loadingObservable = webView.rx.loading
+            .share()
+        
+        loadingObservable
+            .map { return !$0 }
+            .observeOn(MainScheduler.instance)
+            .bind(to: progressView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        loadingObservable
+            .bind(to: UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
+            .disposed(by: disposeBag)
+        
+        webView.rx.title
+            .filterNil()
+            .observeOn(MainScheduler.instance)
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        webView.rx.estimatedProgress
+            .map { return Float($0) }
+            .observeOn(MainScheduler.instance)
+            .bind(to: progressView.rx.progress)
+            .disposed(by: disposeBag)
     }
     
     private func setupProgressView() {
@@ -60,27 +77,8 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
     }
     
     private func requestPage() {
-        guard let urlString = urlString,
-            let myURL = URL(string: urlString) else { return }
+        guard let urlString = urlString, let myURL = URL(string: urlString) else { return }
         let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if (keyPath == "estimatedProgress") {
-            self.progressView.alpha = 1.0
-            self.progressView.setProgress(Float(self.webView.estimatedProgress), animated: true)
-            if (self.webView.estimatedProgress >= 1.0) {
-                UIView.animate(withDuration: 0.3,
-                               delay: 0.3,
-                               options: [.curveEaseOut],
-                               animations: { [weak self] in
-                                self?.progressView.alpha = 0.0
-                    }, completion: {
-                        (finished : Bool) in
-                        self.progressView.setProgress(0.0, animated: false)
-                })
-            }
-        }
     }
 }
