@@ -74,8 +74,19 @@ class DetailPageViewController: UIViewController, WKUIDelegate {
             .bind(to: progressView.rx.progress)
             .disposed(by: disposeBag)
         
-        guard let urlString = urlString, let myURL = URL(string: urlString) else { return }
-        let myRequest = URLRequest(url: myURL)
-        webView.load(myRequest)
+        webView.rx.url
+            .subscribe(onNext: {
+                guard let url = $0 else { return }
+                self.requestWebPage(url: url)
+            })
+            .disposed(by: disposeBag)
+        
+        guard let urlString = urlString, let url = URL(string: urlString) else { return }
+        requestWebPage(url: url)
+    }
+    
+    private func requestWebPage(url: URL) {
+        let urlRequest = URLRequest(url: url)
+        webView.load(urlRequest)
     }
 }
