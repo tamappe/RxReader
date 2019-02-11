@@ -39,6 +39,16 @@ class DetailPageViewController: UIViewController {
         setupProgressView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.progressView.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.progressView.isHidden = true
+    }
+    
     private func setupProgressView() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(progressView)
