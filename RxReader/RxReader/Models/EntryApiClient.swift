@@ -18,7 +18,7 @@ class EntryApiClient: NSObject {
         static let index = "/api/index"
     }
     
-    func request(parameters: [String: AnyObject]?, completion: @escaping ([Entry]?, Error?) -> Void) {
+    func request(parameters: [String: AnyObject]?, completion: @escaping ([Entry], Error?) -> Void) {
         guard let url = URL(string: baseUrl + Path.index) else { return }
         Alamofire.request(url, method: .get, parameters: parameters)
             .responseJSON { response in
@@ -28,6 +28,7 @@ class EntryApiClient: NSObject {
                     DDLogInfo("Success!")
                     guard let data = response.data else {
                         DDLogInfo("no data or no response")
+                        completion([], response.error)
                         return
                     }
                     if response.response?.statusCode == 200 {
@@ -38,11 +39,12 @@ class EntryApiClient: NSObject {
                             completion(json.data, nil)
                         } catch {
                             DDLogError("error: \(error.localizedDescription)")
-                            completion(nil, error)
+                            completion([], error)
                         }
                     }
                 case .failure:
                     DDLogError("Failure!")
+                    completion([], response.error)
                 }
         }
     }

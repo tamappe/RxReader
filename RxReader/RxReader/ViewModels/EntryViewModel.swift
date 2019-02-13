@@ -29,7 +29,7 @@ final class EntryViewModel {
         let param = ["page": currentPage]
         apiClient.request(parameters: param as [String : AnyObject]) { (entries, error) in
             self.isLoading.accept(false)
-            self.localEntries.append(contentsOf: entries ?? [])
+            self.localEntries.append(contentsOf: entries)
             self.dataSource.accept(self.localEntries)
         }
     }
