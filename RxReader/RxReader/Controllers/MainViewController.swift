@@ -10,20 +10,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
+import RxOptional
 
 class MainViewController: UIViewController {
     
-    static let startLoadingOffset: CGFloat = 20.0
+    private static let startLoadingOffset: CGFloat = 20.0
     
-    static func isNearTheBottomEdge(contentOffset: CGPoint, _ tableView: UITableView) -> Bool {
+    private static func isNearTheBottomEdge(contentOffset: CGPoint, _ tableView: UITableView) -> Bool {
         return contentOffset.y + tableView.frame.size.height + startLoadingOffset > tableView.contentSize.height
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    private var viewModel = EntryViewModel()
+    private let viewModel = EntryViewModel()
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ extension MainViewController {
     private func setupViewModel() {
         viewModel.dataSource
             .subscribeOn(MainScheduler.instance)
-            .filter{ !$0.isEmpty }
+            .filterEmpty()
             .bind(to: tableView.rx.items(cellIdentifier:"EntryTableViewCell")) { index, entry, cell in
                 if let cell = cell as? EntryTableViewCell {
                     cell.configureCell(entry: entry, row: index)
