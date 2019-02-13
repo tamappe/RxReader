@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8AAC47BDEE66BB8C6BEFB74B /* Pods_RxReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D107CE6B2B443B02E4EC60 /* Pods_RxReader.framework */; };
+		D509349922143C94002D6988 /* SVProgressHud+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509349822143C94002D6988 /* SVProgressHud+Extension.swift */; };
 		D5CDEB432206B315008A14DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDEB422206B315008A14DF /* AppDelegate.swift */; };
 		D5CDEB482206B315008A14DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CDEB462206B315008A14DF /* Main.storyboard */; };
 		D5CDEB4A2206B318008A14DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CDEB492206B318008A14DF /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		5F6361CA400A6DE30E3B62BB /* Pods_RxReaderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxReaderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		884ACF0DE242DB56C290C09E /* Pods-RxReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxReader/Pods-RxReader.debug.xcconfig"; sourceTree = "<group>"; };
 		A0322352A52673D8A2F38243 /* Pods-RxReaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxReaderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxReaderUITests/Pods-RxReaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D509349822143C94002D6988 /* SVProgressHud+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHud+Extension.swift"; sourceTree = "<group>"; };
 		D5CDEB3F2206B315008A14DF /* RxReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CDEB422206B315008A14DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CDEB472206B315008A14DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				D5FAFEF52209CB140089DE07 /* UIImageView+Extension.swift */,
 				D5FAFEF9220E94C60089DE07 /* UIColor+Extension.swift */,
 				D5FAFEFB220E9A600089DE07 /* UITableViewCell+Extension.swift */,
+				D509349822143C94002D6988 /* SVProgressHud+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxWebKit/RxWebKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -442,6 +446,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxWebKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -478,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5CDEB832206D704008A14DF /* Entry.swift in Sources */,
+				D509349922143C94002D6988 /* SVProgressHud+Extension.swift in Sources */,
 				D5FAFEFC220E9A600089DE07 /* UITableViewCell+Extension.swift in Sources */,
 				D5CDEB892206D77C008A14DF /* EntryViewModel.swift in Sources */,
 				D5FAFEF62209CB140089DE07 /* UIImageView+Extension.swift in Sources */,

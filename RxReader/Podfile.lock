@@ -15,6 +15,7 @@ PODS:
   - RxWebKit (0.3.7):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - RxOptional
   - RxSwift (~> 4.0)
   - RxWebKit
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -35,6 +37,7 @@ SPEC REPOS:
     - RxOptional
     - RxSwift
     - RxWebKit
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -45,7 +48,8 @@ SPEC CHECKSUMS:
   RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   RxWebKit: e39e220919e5e24546c837f5f60689036a1e5920
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 5111e9328afe7f27964ca9b9c93f017ccda47a45
+PODFILE CHECKSUM: 440437cb51f42d565cd5c40acdd756262d672a26
 
 COCOAPODS: 1.5.3

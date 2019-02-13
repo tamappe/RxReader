@@ -13,6 +13,7 @@ target 'RxReader' do
   pod 'CocoaLumberjack/Swift'
   pod 'RxWebKit'
   pod 'RxOptional'
+  pod 'SVProgressHUD'
   
   target 'RxReaderTests' do
     inherit! :search_paths

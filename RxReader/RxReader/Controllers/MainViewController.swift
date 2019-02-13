@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 
 class MainViewController: UIViewController {
     
@@ -21,8 +22,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var viewModel = EntryViewModel()
-    
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let disposeBag = DisposeBag()
 
@@ -95,11 +94,7 @@ extension MainViewController {
     
     private func setupIndicatorLoading() {
         viewModel.isLoading
-            .bind(to: activityIndicatorView.rx.isAnimating)
-            .disposed(by: disposeBag)
-        viewModel.isLoading
-            .map { !$0 }
-            .bind(to: activityIndicatorView.rx.isHidden)
+            .bind(to: SVProgressHUD.rx.isAnimating)
             .disposed(by: disposeBag)
     }
 }
