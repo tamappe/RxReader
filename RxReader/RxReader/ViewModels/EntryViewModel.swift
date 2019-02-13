@@ -13,26 +13,22 @@ import RxCocoa
 final class EntryViewModel {
     
     let dataSource = BehaviorRelay(value: [Entry]())
-
-    let apiClient = EntryApiClient()
     
-    var isLoading = false
+    let isLoading = BehaviorRelay(value: false)
+    
+    private let apiClient = EntryApiClient()
     
     private var localEntries: [Entry] = []
 
     private var currentPage = 0
-
-    let isAnimating = Variable(false)
     
     func updateEntry() {
-        guard !isLoading else { return }
-        isLoading = true
-        isAnimating.value = true
+        guard !isLoading.value else { return }
+        isLoading.accept(true)
         currentPage += 1
         let param = ["page": currentPage]
         apiClient.request(parameters: param as [String : AnyObject]) { (entries, error) in
-            self.isLoading = false
-            self.isAnimating.value = false
+            self.isLoading.accept(false)
             self.localEntries.append(contentsOf: entries ?? [])
             self.dataSource.accept(self.localEntries)
         }

@@ -77,7 +77,7 @@ extension MainViewController {
             .flatMap { offset -> Observable<Void> in
                 return MainViewController.isNearTheBottomEdge(contentOffset: offset, self.tableView) ? Observable.just(()) : Observable.empty()
             }
-            .filter{ !self.viewModel.isLoading }
+            .filter{ !self.viewModel.isLoading.value }
             .subscribe(onNext: {
                 self.viewModel.insertEntries()
             })
@@ -94,12 +94,12 @@ extension MainViewController {
     }
     
     private func setupIndicatorLoading() {
-        viewModel.isAnimating.asDriver()
-            .drive(activityIndicatorView.rx.isAnimating)
+        viewModel.isLoading
+            .bind(to: activityIndicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
-        viewModel.isAnimating.asDriver()
+        viewModel.isLoading
             .map { !$0 }
-            .drive(activityIndicatorView.rx.isHidden)
+            .bind(to: activityIndicatorView.rx.isHidden)
             .disposed(by: disposeBag)
     }
 }
